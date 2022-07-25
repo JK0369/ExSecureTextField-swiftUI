@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+  @State private var username = ""
+  
+  var body: some View {
+    TextField(
+      "입력하세요",
+      text: $username
+    )
+      .modifier(PrimaryRoundTextField())
+      .padding()
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
+}
+
+struct PrimaryRoundTextField: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(.system(size: 16))
+      .textFieldStyle(.roundedBorder)
+      .foregroundColor(.black)
+      .textInputAutocapitalization(.never)
+      .disableAutocorrection(true)
+  }
 }
