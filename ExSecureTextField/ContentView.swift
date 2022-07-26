@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var username = ""
+  @State private var password = ""
   
   var body: some View {
     TextField(
@@ -17,6 +18,11 @@ struct ContentView: View {
     )
       .modifier(PrimaryRoundTextField())
       .padding()
+    
+    SecureField(
+      "Password",
+      text: $password
+    )
   }
 }
 
